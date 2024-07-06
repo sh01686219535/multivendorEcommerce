@@ -1,0 +1,26 @@
+.btn-login {
+    background-color: #454743 !important;
+    font-weight: 700;
+    width: 170px;
+    border-radius: 25px !important;
+    color: aliceblue !important;
+}
+.btn-login-1 {
+    background-color: #3c6e09 !important;
+    font-weight: 700;
+    width: 170px;
+    border-radius: 25px !important;
+    color: aliceblue !important;
+}
+.m-l{
+    margin: 0 0 0 20px;
+}
+.m2{
+    margin: 0 0 0 100px;
+}
+.c-u-p{
+    cursor: pointer;
+}
+a{
+    text-decoration: none !important ;
+}
