@@ -56,4 +56,6 @@ input:checked + .slider::before {
   height: 140px !important;
   display: block;
 }
-
+.icon-i{
+ font-size: 21px !important;
+}

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     //home
     public function home(){
-        return view('frontend.home.home');
+        $sliders = Slider::where('status', 'active')
+                 ->orderBy('id', 'desc')
+                 ->get();
+        return view('frontend.home.home',compact('sliders'));
     } 
     // shop
     public function shop(){

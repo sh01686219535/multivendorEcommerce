@@ -44,14 +44,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero__item set-bg" data-setbg="{{asset('frontAsset')}}/img/hero/banner.jpg">
-                    <div class="hero__text">
-                        <span>FRUIT FRESH</span>
-                        <h2>Vegetable <br />100% Organic</h2>
-                        <p>Free Pickup and Delivery Available</p>
-                        <a href="#" class="primary-btn">SHOP NOW</a>
+                @foreach ($sliders as $slider)
+                    <div class="hero__item set-bg" data-setbg="{{ asset($slider->image) }}">
+                        <div class="hero__text">
+                            <span>{{$slider->text}}</span>
+                            <h2>{{$slider->title}}</h2>
+                            <p>{{$slider->description}}</p>
+                            <a href="{{$slider->btnUrl ? $slider->btnUrl: '#' }}" class="primary-btn">SHOP NOW</a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
