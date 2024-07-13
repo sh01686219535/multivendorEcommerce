@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('backendAsset') }}/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backendAsset') }}/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('backendAsset') }}/css/docs.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('backendAsset') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -30,6 +31,6 @@
     <link rel="stylesheet" href="{{ asset('backendAsset') }}/plugins/summernote/summernote-bs4.min.css">
     {{-- datatable start --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css">
-    <link rel="stylesheet" href="    https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
     {{-- datatable end --}}
 </head>

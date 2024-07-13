@@ -33,6 +33,24 @@
                   <p>Slider</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('admin.category.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.subCategory.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sub Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.childCategory.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Child Category</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 @section('title')
-    Slider
+    Sub Category
 @endsection
 @section('content')
     <div class="content-wrapper">
         <div class="container">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="row">
-                    <h3><i class="fas fa-sliders-h icon-i m-2"></i> Slider</h3>
+                    <h3><i class="fas fa-sliders-h icon-i m-2"></i>Sub Category</h3>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="card">
                             <div class="card-head">
                                 <div class="head d-flex justify-content-between m-3">
-                                    <h3>Slider Create</h3>
+                                    <h3>Sub Category Create</h3>
                                     <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#sliderModal"><i
                                             class="fa fa-plus"></i> Create</a>
                                 </div>
@@ -23,11 +23,10 @@
                                     <table class="table table-hover table-bordered div-width" id="example">
                                         <thead>
                                             <tr>
-                                                <th>Text</th>
-                                                <th>Title</th>
+                                                <th>Sl</th>
+                                                <th>Category</th>
+                                                <th>Name</th>
                                                 <th>Status</th>
-                                                <th>Description</th>
-                                                <th>Image</th>
                                                 <th>Ation</th>
                                             </tr>
                                         </thead>
@@ -35,58 +34,63 @@
                                             @php
                                                 $i = 1;
                                             @endphp
-                                            @foreach ($slider as $item)
+                                            @foreach ($subCategory as $item)
                                                 <tr>
-                                                    <td>{{ $item->text }}</td>
-                                                    <td>{{ Str::limit($item->title, 10) }}</td>
-                                                    <td>{{ $item->status }}</td>
-                                                    <td>{{ Str::limit($item->description, 10) }}</td>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $item->category->name }}</td>
+                                                    <td>{{ $item->name }}</td>
                                                     <td>
-                                                        <img src="{{ asset($item->image) }}" width="50" height="50"
-                                                            alt="">
+                                                        @if ($item->status == 'active')
+                                                            <button class="btn btn-success">{{ $item->status }}</button>
+                                                        @elseif($item->status == 'Inactive')
+                                                            <button class="btn btn-danger">{{ $item->status }}</button>
+                                                        @endif
+
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-info" data-bs-toggle="modal"
-                                                            data-bs-target="#sliderUpdateModal{{$item->id}}"><i
+                                                        <a class="btn btn-info ds-ib-block" data-bs-toggle="modal"
+                                                            data-bs-target="#subCategoryUpdateModal{{ $item->id }}"><i
                                                                 class="fa fa-edit"></i></a>
                                                         <!-- Slider Update -->
-                                                        <div class="modal fade" id="sliderUpdateModal{{$item->id}}" tabindex="-1"
+                                                        <div class="modal fade"
+                                                            id="subCategoryUpdateModal{{ $item->id }}" tabindex="-1"
                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
-                                                                <x-form.form action="{{ route('admin.slider.update',$item->id) }}"
+                                                                <x-form.form
+                                                                    action="{{ route('admin.subCategory.update', $item->id) }}"
                                                                     method="post" has-files>
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h1 class="modal-title fs-5"
-                                                                                id="exampleModalLabel">Slider Create</h1>
+                                                                                id="exampleModalLabel">Sub Category Update
+                                                                            </h1>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <x-error />
                                                                         <div class="modal-body">
-                                                                            <x-form.input type="text" name="text"
-                                                                                placeholder="Enter Text" value="{{$item->text}}"/>
-                                                                            <x-form.input type="text" name="title"
-                                                                                placeholder="Enter Title" value="{{$item->title}}"/>
-                                                                            <x-form.input type="text" name="btnUrl"
-                                                                                placeholder="Enter Btn URL" value="{{$item->btnUrl}}"/>
-                                                                            <x-form.textarea name="description"
-                                                                                placeholder="Enter Description" value="{{$item->description}}"/>
-                                                                            <x-form.input type="text" name="serial"
-                                                                                placeholder="Enter serial" value="{{$item->serial}}"/>
+                                                                            <x-form.input type="text" name="name"
+                                                                                placeholder="Enter Text"
+                                                                                value="{{ $item->name }}" />
+                                                                            <x-form.select :category="$category"
+                                                                                name="category_id"  />
+
                                                                             <div class="form-group">
                                                                                 <label for="status">Status</label>
                                                                                 <select id="status" name="status"
-                                                                                class="form-control">
-                                                                                <option value="{{$item->status}}"{{$item->status == 'active' ? 'selected': ''}}>Active</option>
-                                                                                <option value="{{$item->status}}" {{$item->status == 'Inactive' ? 'selected': ''}}>Inactive
+                                                                                    class="form-control">
+                                                                                    <option
+                                                                                        value="active"{{ $item->status == 'active' ? 'selected' : '' }}>
+                                                                                        Active</option>
+                                                                                    <option value="Inactive"
+                                                                                        {{ $item->status == 'Inactive' ? 'selected' : '' }}>
+                                                                                        Inactive
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
-                                                                            <x-form.input type="file" name="image" />
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary"
@@ -98,10 +102,14 @@
                                                                 </x-form.form>
                                                             </div>
                                                         </div>
-                                                        <form id="delete-form-{{ $item->id }}" action="{{ route('admin.slider.destroy', $item->id) }}" method="POST">
+                                                        <form class="ds-ib-block" id="delete-form-{{ $item->id }}"
+                                                            action="{{ route('admin.subCategory.destroy', $item->id) }}"
+                                                            method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger delete-item" data-id="{{ $item->id }}"><i class="fa fa-trash"></i></button>
+                                                            <button type="submit" class="btn btn-danger delete-item"
+                                                                data-id="{{ $item->id }}"><i
+                                                                    class="fa fa-trash"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -119,21 +127,18 @@
     <!-- Slider Create -->
     <div class="modal fade" id="sliderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <x-form.form action="{{ route('admin.slider.store') }}" method="post" has-files>
+            <x-form.form action="{{ route('admin.subCategory.store') }}" method="post">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Slider Create</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sub Category Create</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <x-error />
                     <div class="modal-body">
-                        <x-form.input type="text" name="text" placeholder="Enter Text" />
-                        <x-form.input type="text" name="title" placeholder="Enter Title" />
-                        <x-form.input type="text" name="btnUrl" placeholder="Enter Btn URL" />
-                        <x-form.textarea name="description" placeholder="Enter Description" />
-                        <x-form.input type="file" name="image" />
-                        <x-form.input type="text" name="serial" placeholder="Enter serial" />
+                        <x-form.input type="text" name="name" placeholder="Enter Name" />
+                        <x-form.select :category="$category" name="category_id" />
+
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select id="status" name="status" class="form-control">

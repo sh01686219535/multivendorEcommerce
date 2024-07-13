@@ -59,3 +59,9 @@ input:checked + .slider::before {
 .icon-i{
  font-size: 21px !important;
 }
+.div-width{
+  width: 100% !important;
+}
+.ds-ib-block{
+  display: inline-block;
+}
