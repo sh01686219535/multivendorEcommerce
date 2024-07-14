@@ -1,3 +1,6 @@
+@php
+    $category = \App\Models\Category::where('status','active')->get();
+@endphp
 <section class="hero">
     <div class="container">
         <div class="row">
@@ -8,7 +11,10 @@
                         <span>All departments</span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
+                        @foreach ($category as $categories)
+                        <li><a href="#">{{$categories->name}}</a></li>
+                        @endforeach
+                        {{-- <li><a href="#">Fresh Meat</a></li>
                         <li><a href="#">Vegetables</a></li>
                         <li><a href="#">Fruit & Nut Gifts</a></li>
                         <li><a href="#">Fresh Berries</a></li>
@@ -18,7 +24,7 @@
                         <li><a href="#">Fresh Onion</a></li>
                         <li><a href="#">Papayaya & Crisps</a></li>
                         <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        <li><a href="#">Fresh Bananas</a></li> --}}
                     </ul>
                 </div>
             </div>
