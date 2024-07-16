@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\backend\AdminContoller;
 use App\Http\Controllers\backend\AdminvendorprofileController;
+use App\Http\Controllers\backend\AjaxController;
 use App\Http\Controllers\backend\BannerController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ChildCategoryController;
+use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\SubCategoryController;
 use App\Http\Controllers\backend\ProfileContoller;
 use App\Http\Controllers\backend\SliderController;
@@ -29,3 +31,7 @@ Route::resource('childCategory',ChildCategoryController::class);
 Route::resource('banner',BannerController::class);
 // Vendor Profile Route Curd
 Route::resource('vendor',AdminvendorprofileController::class);
+// Product Route Curd
+Route::resource('product',ProductController::class);
+// ajax call route
+Route::get('/get/subCategor',[AjaxController::class,'getSubCategor'])->name('get.subCategor');
