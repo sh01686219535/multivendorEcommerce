@@ -24,7 +24,7 @@
                   <a href="#" class="nav-link">
                       <i class="nav-icon fas fa-copy"></i>
                       <p>
-                          Top Navigation
+                          Manage Category
                           <i class="fas fa-angle-left right"></i>
                       </p>
                   </a>
@@ -55,42 +55,59 @@
                       </li>
                   </ul>
               </li>
-              
-              
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Charts
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>ChartJS</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
-                        <p>
-                            UI Elements
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/UI/general.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>General</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+              <li class="nav-item ">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Manage Ecommerce
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.vendor.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Vendor Profile</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+                <li class="nav-item ">
+                  <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-copy"></i>
+                      <p>
+                          Manage Product
+                          <i class="fas fa-angle-left right"></i>
+                      </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="{{ route('admin.banner.index') }}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>brand</p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('admin.category.index') }}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Category</p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('admin.subCategory.index') }}" class="nav-link ">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Sub Category</p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('admin.childCategory.index') }}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Child Category</p>
+                          </a>
+                      </li>
+                  </ul>
+              </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\backend\AdminContoller;
+use App\Http\Controllers\backend\AdminvendorprofileController;
+use App\Http\Controllers\backend\BannerController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ChildCategoryController;
 use App\Http\Controllers\backend\SubCategoryController;
@@ -23,3 +25,7 @@ Route::resource('category',CategoryController::class);
 Route::resource('subCategory',SubCategoryController::class);
 // childCategory Route Curd
 Route::resource('childCategory',ChildCategoryController::class);
+// brand Route Curd
+Route::resource('banner',BannerController::class);
+// Vendor Profile Route Curd
+Route::resource('vendor',AdminvendorprofileController::class);
