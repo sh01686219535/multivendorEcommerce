@@ -34,4 +34,5 @@ Route::resource('vendor',AdminvendorprofileController::class);
 // Product Route Curd
 Route::resource('product',ProductController::class);
 // ajax call route
-Route::get('/get/subCategor',[AjaxController::class,'getSubCategor'])->name('get.subCategor');
+Route::post('/get/category', [AjaxController::class, 'getSubCategory']);
+Route::post('/get/subCategory', [AjaxController::class, 'getChildCategory']);
