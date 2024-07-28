@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\BannerController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ChildCategoryController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\ProductImgGallery;
 use App\Http\Controllers\backend\SubCategoryController;
 use App\Http\Controllers\backend\ProfileContoller;
 use App\Http\Controllers\backend\SliderController;
@@ -33,6 +34,8 @@ Route::resource('banner',BannerController::class);
 Route::resource('vendor',AdminvendorprofileController::class);
 // Product Route Curd
 Route::resource('product',ProductController::class);
+// Product Img Gallery Route Curd
+Route::resource('productImgGallery',ProductImgGallery::class);
 // ajax call route
 Route::post('/get/category', [AjaxController::class, 'getSubCategory']);
 Route::post('/get/subCategory', [AjaxController::class, 'getChildCategory']);

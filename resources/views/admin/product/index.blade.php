@@ -57,9 +57,7 @@
                                                     <a class="btn btn-info" data-bs-toggle="modal" title="Edit"
                                                         data-bs-target="#productModal{{ $products->id }}"><i
                                                             class="fa fa-edit"></i></a>
-                                                    <a class="btn btn-info" data-bs-toggle="modal" title="multiImg"
-                                                        data-bs-target="#multiImgModal{{ $products->id }}"><i
-                                                            class="fa fa-edit"></i></a>
+                                                    <a class="btn btn-info" href="{{ route('admin.product.destroy', $products->id) }}"><i class="fa fa-image"></i></a>
                                                     <form class="ds-ib-block" id="delete-form-{{ $products->id }}"
                                                         action="{{ route('admin.product.destroy', $products->id) }}"
                                                         method="post">
@@ -70,47 +68,7 @@
                                                                 class="fa fa-trash"></i></button>
 
                                                     </form>
-                                                    <div class="modal fade" id="multiImgModal{{ $products->id }}"
-                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-xl">
-                                                            <x-form.form
-                                                                action="{{ route('admin.product.update', $products->id) }}"
-                                                                method="post" has-files>
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                            Upload Image</h1>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <x-error />
-                                                                    <div class="modal-body">
-                                                                        <div class="row">
-                                                                            <div
-                                                                                class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                                                                                <x-form.input type="file"
-                                                                                    name="thumb_image" id="image1" />
-                                                                                <img src="{{ asset('backendAsset/img/avatar.png') }}"
-                                                                                    width="80" height="80"
-                                                                                    class="rounded-circle" id="showImage"
-                                                                                    alt="">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Submit</button>
-                                                                    </div>
-                                                                </div>
-                                                            </x-form.form>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <!-- Slider Create -->
 
                                                     <div class="modal fade" id="productModal{{ $products->id }}"
