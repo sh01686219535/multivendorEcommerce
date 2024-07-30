@@ -31,6 +31,10 @@ trait ImageUploadTrait {
             return $path.'/'.$imageName;
         }
     }
+    //multipleImgUpload
+    public function multipleImgUpload(Request $request){
+
+    }
     public function delteItem(string $path) {
 
          if (File::exists(public_path($path)))

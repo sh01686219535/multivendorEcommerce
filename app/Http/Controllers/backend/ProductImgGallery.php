@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductImgGallery extends Controller
@@ -10,9 +11,10 @@ class ProductImgGallery extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+     $product = Product::findOrFail($request->productId);
+     return view('admin.productImg.index',compact('product'));
     }
 
     /**
@@ -28,7 +30,7 @@ class ProductImgGallery extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
