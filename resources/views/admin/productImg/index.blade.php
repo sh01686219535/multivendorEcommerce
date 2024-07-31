@@ -11,24 +11,76 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="card">
                             <div class="card-head">
-                                <x.form.form action="{{ route('admin.productImgGallery.store') }}" method="post" has-fails>
+                                <a href="{{route('admin.product.index')}}" class="m-2 btn btn-secondary">Back</a>
+                                <h3 class="m-2">Product Name : {{$product->name}}</h3>
+                                <form action="{{ route('admin.productImgGallery.store') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="row m-2">
                                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                                            <x-form.input type="file" name="thumb_image" id="thumb_image" class="m-2" multiple="true"/>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <input type="file" name="image[]" id="image" class="m-2"
+                                                    multiple />
+                                            </div>
+                                            <input type="hidden" name="product" value="{{ $product->id }}" />
                                             @if ($product->thumb_image)
-                                            <img src="{{ asset($product->thumb_image) }}" width="100"
-                                            height="100" class="rounded-circle" alt="" id="showImage">
+                                                <img src="{{ asset($product->thumb_image) }}" width="100" height="100"
+                                                    class="rounded-circle" alt="" id="showImage">
                                             @else
-                                            <img src="{{ asset('backendAsset/img/avatar5.png') }}" width="100"
-                                            height="100" class="rounded-circle" alt="" id="showImage">
+                                                <img src="{{ asset('backendAsset/img/avatar5.png') }}" width="100"
+                                                    height="100" class="rounded-circle" alt="" id="showImage">
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 my-2">
                                         <button type="submit" class="btn btn-success m-2">Submit</button>
                                     </div>
-                                </x.form.form>
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered" id="example">
+                                     <thead>
+                                        <tr>
+                                            <th>Sl</th>
+                                            <th>Product</th>
+                                            <th>Product Image</th>
+                                            <th>Action</th>
+                                        </tr>
+                                     </thead>
+                                     <tbody>
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                        @foreach ($productImg as $productImgs)
+                                        <tr>
+                                            <th>{{$i++}}</th>
+                                            <td>{{$productImgs->product->name ?? ''}}</td>
+                                            <td>
+                                                <img src="{{asset($productImgs->image)}}" width="50" height="50" alt="">
+                                            </td>
+                                            <td>
+                                                <form class="ds-ib-block" id="delete-form-{{ $productImgs->id }}"
+                                                    action="{{ route('admin.productImgGallery.destroy', $productImgs->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger delete-item"
+                                                        data-id="{{ $productImgs->id }}"><i
+                                                            class="fa fa-trash"></i></button>
+
+                                                </form>
+                                            </td>
+                                        </tr> 
+                                        @endforeach
+                                       
+                                     </tbody>
+                                    </table>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,13 +88,13 @@
             </div>
         </div>
     </div>
-    <!-- Slider Create -->
 @endsection
+
 @push('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#thumb_image').change(function(e) {
+            $('#image').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('#showImage').attr('src', e.target.result);
