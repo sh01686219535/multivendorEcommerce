@@ -58,6 +58,7 @@
                                                         data-bs-target="#productModal{{ $products->id }}"><i
                                                             class="fa fa-edit"></i></a>
                                                     <a class="btn btn-info" href="{{ route('admin.productImgGallery.index', ['productId'=>$products->id]) }}"><i class="fa fa-image"></i></a>
+                                                    <a class="btn btn-success" href="{{ route('admin.productVariant',$products->id) }}"><i class="fa fa-gear"></i></a>
                                                     <form class="ds-ib-block" id="delete-form-{{ $products->id }}"
                                                         action="{{ route('admin.product.destroy', $products->id) }}"
                                                         method="post">
