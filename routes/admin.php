@@ -39,6 +39,9 @@ Route::resource('product',ProductController::class);
 Route::resource('productImgGallery',ProductImgGallery::class);
 // Product variant Route Curd
 Route::get('productVariant/{id}',[ProductVariantController::class , 'productVariant'])->name('productVariant');
+Route::post('productVariant/create/{id}',[ProductVariantController::class , 'productVariantCreate'])->name('productVariant.create');
+Route::post('productVariant/update/{id}',[ProductVariantController::class , 'productVariantUpdate'])->name('productVariant.update');
+Route::post('productVariant/delete/{id}',[ProductVariantController::class , 'productVariantDelete'])->name('productVariant.delete');
 // ajax call route
 Route::post('/get/category', [AjaxController::class, 'getSubCategory']);
 Route::post('/get/subCategory', [AjaxController::class, 'getChildCategory']);
